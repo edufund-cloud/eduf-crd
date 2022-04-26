@@ -31,7 +31,8 @@
 		$nmsql_src = mysqli_num_rows($xsql_src);
 		if ($nmsql_src < 1){
 			if(!empty($txtEmail)){	
-				$SysPass = passAcak(8);
+				//$SysPass = passAcak(8);
+				$SysPass = "Indonesia,1745";
 				$SysPass_Ori= $SysPass;
 				$SysPass = hash('sha256',$SysPass);
 
