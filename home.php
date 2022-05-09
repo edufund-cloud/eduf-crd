@@ -282,6 +282,8 @@
   }
 
   function load_result(urlx,navx){
+    var txtStartDate  = $('#txtStartDate').val();  
+    var txtEndDate    = $('#txtEndDate').val();
     $.ajax({
       url: urlx,
       beforeSend:function(){$(".spinner").css("display","block");},

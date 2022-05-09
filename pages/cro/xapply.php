@@ -27,7 +27,11 @@
 					('$_GET[appid]','$note_status','$txtNote','$now','$user_id','$user_note_group')";
 				if ($xsql_note = mysqli_query($koneksi, $sql_note)){
 					//Update Status
-					$sql_sts = "UPDATE apply SET data_status = '$note_status' WHERE data_id = '$_GET[appid]'";
+					$sql_sts = "UPDATE apply SET 
+						data_status = '$note_status',
+						data_update = '$now',
+						user_update = '$user_id'  
+						WHERE data_id = '$_GET[appid]'";
 					$xsql_sts = mysqli_query($koneksi, $sql_sts);
 
 					$modul = 'Update Apply';

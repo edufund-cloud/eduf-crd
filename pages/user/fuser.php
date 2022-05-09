@@ -115,17 +115,13 @@
                 <div class="col-sm-10">
                   <select class="custom-select" style="width: 100%;" 
                     name="cmbSysLevel" <?PHP echo $Disabled; ?>>
-                    <option value="0">-Select system level-</option>
+                    <option value="user" <?PHP if ($arsql['user_level'] == "user"){ echo"selected"; } ?> >user</option>
                     <?PHP
                       if($user_level == "root"){
                         ?>
                         <option value="root" <?PHP if ($arsql['user_level'] == "root"){ echo"selected"; } ?> >root</option>
                         <?PHP
-                      }
-                    ?>
-                    <option value="administrator" <?PHP if ($arsql['user_level'] == "administrator"){ echo"selected"; } ?> >administrator</option>
-                    <option value="superuser" <?PHP if ($arsql['user_level'] == "superuser"){ echo"selected"; } ?> >super user</option>
-                    <option value="user" <?PHP if ($arsql['user_level'] == "user"){ echo"selected"; } ?> >user</option>
+                      }                    
                     ?>
                   </select>
                 </div>

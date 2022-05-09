@@ -12,6 +12,7 @@
 
   $Home_Url = $arsql_home['menu_file'];
   $Parent_Url = "pages/tech/tapply.php";
+  $Self_Url   = "pages/tech/fapply.php?page=".$_GET['page']."&appid=".$_GET['appid'];
 
   switch ($_GET['page']){
     default:  
@@ -69,7 +70,11 @@
         <ol class="breadcrumb float-sm-left">
           <li class="breadcrumb-item"><a onClick="javascript:load_right('<?PHP echo $Home_Url; ?>')" style="cursor: pointer;" >Home</a></li>
           <li class="breadcrumb-item"><a onClick="javascript:load_right('<?PHP echo $Parent_Url; ?>')" style="cursor: pointer;" >Credit</a></li>
-          <li class="breadcrumb-item active">Data Credit</li>
+          <li class="breadcrumb-item text-info">
+            <a onClick="javascript:load_right('<?PHP echo $Self_Url; ?>')" style="cursor: pointer;" >
+            <small class="fas fa-rotate mr-1"></small>Data Credit - Reject
+            </a>
+          </li>
         </ol>
       </div>      
     </div>
@@ -83,7 +88,7 @@
       <div class="card-header p-2">
         <ul class="nav nav-pills">
           <li class="nav-item" title="completion">
-            <a class="nav-link active mr-1" href="#completion" data-toggle="tab" id="tab-completion">
+            <a class="nav-link mr-1" href="#completion" data-toggle="tab" id="tab-completion">
               Completion
             </a>
           </li>
@@ -114,7 +119,7 @@
           </li>
         
           <li class="nav-item" title="Note">
-            <a class="nav-link" href="#note" data-toggle="tab" disabled>
+            <a class="nav-link active" href="#note" data-toggle="tab" disabled>
               <i class="fas fa-pen mr-1"></i>Note
             </a>
           </li>          
