@@ -27,7 +27,7 @@
   }
 ?>
 
-<div class="active tab-pane" id="completion">
+<div class="tab-pane" id="completion">
   <!-- Start Form -->
   <div class="card-body">
 

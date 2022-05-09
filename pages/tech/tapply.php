@@ -22,7 +22,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">
           <li class="breadcrumb-item"><a onClick="javascript:load_right('<?PHP echo $Home_Url; ?>')" style="cursor: pointer;" >Home</a></li>
-          <li class="breadcrumb-item active">Data Credit - Tech</li>
+          <li class="breadcrumb-item active">Data Credit - Reject</li>
         </ol>
       </div>      
     </div>

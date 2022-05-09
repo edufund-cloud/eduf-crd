@@ -5,10 +5,10 @@
   
   switch ($_GET['page']){
     default:
-      $Action     = "pages/search/rquery.php?act=src";
-      $Parent_Url = "pages/search/rquery.php";
+      $Action     = "pages/search/rquery.php";
+      $Parent_Url = "pages/search/squery.php";
       $Head_bg    = "card-lightblue card-outline";      
-      $Head_label = "Search By Query";
+      $Head_label = "Search by Query";
       $Head_icon  = "fa-magnifying-glass";
       $Btn_label  = "Search";
       $Btn_color  = "btn-success";
@@ -40,102 +40,152 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
-        <div class="card <?PHP echo $Head_bg; ?>" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+      <div class="col-md-3">
+        <div class="card <?PHP echo $Head_bg; ?>" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
           <div class="card-header">
             <h3 class="card-title text-navy font-weight-bold text-uppercase">
               <small><strong><i class="fa <?PHP echo $Head_icon; ?> menu-icon mr-2 text-navy"></i> <?PHP echo $Head_label; ?></strong></small>
             </h3>
           </div>
 
-          <form role="form" name="finput" id="myForm" method="post" action="<?PHP echo $Action; ?>" >
-            <!-- Start Form -->
-            <div class="card-body">
+          <!-- Start Form -->
+          <div class="card-body">
 
-              <div class="row">
-                <div class="col-12 col-lg-12">
-                  
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <label for="txtStartDate">Start Date</label>
-                        <label class="badge bg-danger" style="margin-left: 10px;"> Required</label>
-                        <input type="date" class="form-control datetimepicker-input" 
-                          style="background-color: #F6F6F6;" 
-                          id="txtStartDate" name="txtStartDate" placeholder="Start date" />
-                      </div>
+            <div class="row">
+              <div class="col-12 col-lg-12">
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="txt_id">ID</label>
+                      <input type="text" class="form-control" 
+                        style="background-color: #F6F6F6;" 
+                        id="txt_id" name="txt_id" placeholder="ID debitur" />
                     </div>
-
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <label for="txtEndDate">End Date</label>
-                        <label class="badge bg-danger" style="margin-left: 10px;"> Required</label>
-                        <input type="date" class="form-control datetimepicker-input" 
-                          style="background-color: #F6F6F6;" 
-                          id="txtEndDate" name="txtEndDate" placeholder="End date" />
-                      </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <label for="cmbQuery">Query</label>
-                        <label class="badge bg-danger" style="margin-left: 10px;"> Required</label>
-                        <select class="custom-select" style="width: 100%;" name="cmbQuery" id="cmbQuery">
-                          <option value="0">- Pilih -</option>
-                        </select>                        
-                      </div>
-                    </div>                    
                   </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="cmbQuery">Query</label>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-primary">
+                              <input type="checkbox" id="chk_id_reject" name="chk_id_reject" value="1">
+                              <label for="chk_id_reject" class="font-weight-normal">
+                                KTP ada di list reject
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-primary">
+                              <input type="checkbox" id="chk_id_pasangan_reject" name="chk_id_pasangan_reject" 
+                                value="1">
+                              <label for="chk_id_pasangan_reject" class="font-weight-normal">
+                                KTP Pasangan ada di list reject
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-primary">
+                              <input type="checkbox" id="chk_phone_reject" name="chk_phone_reject" value="1">
+                              <label for="chk_phone_reject" class="font-weight-normal">
+                                No Telepon ada di list reject
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-primary">
+                              <input type="checkbox" id="chk_phone_pasangan_reject" name="chk_phone_pasangan_reject" 
+                                value="1">
+                              <label for="chk_phone_pasangan_reject" class="font-weight-normal">
+                                No Telepon Pasangan di list Reject
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                    <div class="form-group" style="margin-top:10px;">
+                      <button type="button" class="btn btn-success" id="btnSearch" 
+                        onclick="javascript:cb_result('<?PHP echo $Action; ?>');">  
+                      <i class="fa <?PHP echo $Btn_icon; ?> menu-icon mr-1"></i> <?PHP echo $Btn_label; ?></button>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="spinner" hidden>Loading</label>
+                      <div class="spinner" style="display: none;" align="center">
+                        <img id="img-spinner" src="spiner.gif" style="width: 30px; height: 30px;" title="Process" >
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
-            <!-- End Form -->            
+          </div>
+          <!-- End Form -->
+          
+        </div>
+      </div>
 
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn <?PHP echo $Btn_color; ?>" onClick="javascript:result_query('<?PHP echo $Parent_Url; ?>')">  
-                <i class="fa <?PHP echo $Btn_icon; ?> menu-icon mr-1"></i> <?PHP echo $Btn_label; ?></button>
-              <div class="spinner" style="display: none;" align="center">
-                <img id="img-spinner" src="spiner.gif" style="width: 30px; height: 30px;" title="Process" >
-              </div>
-            </div>
-          </form>
+      <!-- result -->
+      <div class="col-md-9" >
+        <div style="min-height: 97%;" id="result_query">
           
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <!-- <div class="col-sm-6">
-          <h3 class="card-title text-navy font-weight-bold text-uppercase">Result Query</h3>
-        </div> -->
-        <div id="result_query"></div>
-      </div>
-    </div>
   </div>
 </section>
 
-
 <script type="text/javascript">
-  $("#myForm").submit(function(event){ 
-    event.preventDefault(); //prevent default action 
-    var post_url        = $(this).attr("action"); //get form action url
-    var request_method  = $(this).attr("method"); //get form GET/POST method
-    var form_data       = $(this).serialize(); //Encode form elements for submission    
+  function cb_result(urlx,navx){
+    var txt_id  = document.getElementById('txt_id').value;
+    
+    if (document.getElementById('chk_id_reject').checked == true){
+      var chk_id_reject = document.getElementById('chk_id_reject').value;
+    }
+    if (document.getElementById('chk_id_pasangan_reject').checked == true){
+      var chk_id_pasangan_reject = document.getElementById('chk_id_pasangan_reject').value;
+    }
+    if (document.getElementById('chk_phone_reject').checked == true){
+      var chk_phone_reject = document.getElementById('chk_phone_reject').value;
+    }
+    if (document.getElementById('chk_phone_pasangan_reject').checked == true){
+      var chk_phone_pasangan_reject = document.getElementById('chk_phone_pasangan_reject').value;
+    }
+    
     $.ajax({
-      url : post_url,
-      type: request_method,
-      data : form_data,
-      beforeSend:function(){$(".spinner").css("display","block");}
-    }).done(function(response){
-      if(response.indexOf('Success') > -1){   
-        $('#result_query').load("<?PHP echo $Parent_Url ; ?>");
-        return false;
-      } 
-      else{
-        toastr.error(response,'Confirm');
-        $(".spinner").css("display","none");
+      url: urlx,
+      data : {txt_id:txt_id, chk_id_reject:chk_id_reject, chk_id_pasangan_reject:chk_id_pasangan_reject, chk_phone_reject: chk_phone_reject, chk_phone_pasangan_reject:chk_phone_pasangan_reject},
+      beforeSend:function(){$(".spinner").css("display","block");},
+      success: function(html){
+        $('#result_query').html(html);  
+        $(".spinner").css("display","none");                   
       }
-    });     
-  });
+    });
+  }
 </script>
